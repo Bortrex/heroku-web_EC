@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+    <h2>Select the file(s) to upload</h2>
+
+    <div style="width: 700px">
+
+    <p>
+{#            {% with messages = get_flashed_messages() %}#}
+{#                {% if messages %}#}
+{#                    <ul class=flashes>#}
+{#                        {% for message in messages %}#}
+{#                            <li>{{ message }}</li>#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
+{#                {% endif %}#}
+{#            {% endwith %}#}
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+    </p>
+
+    <form method="POST" action="/defs" enctype="multipart/form-data">
+        <dl>
+            <p>
+
+            <div class="custom-file" >
+                <input type="file" class="custom-file-input" name="file" autocomplete="off" id="validatedCustomFile"
+                        multiple required>
+                <label class="custom-file-label text-truncate" for="validatedCustomFile">Choose files...</label>
+            </div>
+
+
+            </p>
+
+        </dl>
+        <p>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </p>
+
+{#        progress bar#}
+{#        <div class="progress" style="width: 700px">#}
+{#            <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0"#}
+{#                 aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>#}
+{#        </div>#}
+
+
+
+        <a href="/appear"><button type="button" class="btn btn-primary">Extract</button></a>
+    </form>
+</div>
+
+    <script type="text/javascript">
+             $('.custom-file-input').change(function (e) {
+                    var files = [];
+                    for (var i = 0; i < $(this)[0].files.length; i++) {
+                        files.push($(this)[0].files[i].name);
+                    }
+                    $(this).next('.custom-file-label').html(files.join('; '));
+                });
+    </script>
+
+
+{% endblock %}

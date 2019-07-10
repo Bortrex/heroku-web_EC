@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+    <h2>Example 3 - Definitions</h2>
+
+    <div style="width: 700px">
+    <p>
+
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+        {% endfor %}
+    </p>
+
+    <p class="lead">
+            Coming soon...
+    </p>
+    </div>
+
+
+{% endblock %}
