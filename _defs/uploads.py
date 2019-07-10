@@ -48,7 +48,10 @@ def upload_file():
 
 @app.route('/appear')
 def pass2reader():
+
     path = os.getcwd()+'/uploads/definitions'
+    if not os.path.exists(path):
+        os.makedirs(path)
 
     if not os.listdir(path):
         flash("Directory is empty!")
