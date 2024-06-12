@@ -1,1 +1,3 @@
-# Deploy on Heroku
+# Deploy project on Heroku web-server
+
+Student project at ULiege
